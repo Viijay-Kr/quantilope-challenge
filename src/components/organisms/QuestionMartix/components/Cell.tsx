@@ -12,6 +12,13 @@ interface Props {
   questionId: number;
 }
 
+/**
+ * This is a cell component used to conditionally render the cell item
+ * It depends on rowIndex , columnIndex to determine the component to render based on the position in the grid
+ * take updater function to update the summary of the question
+ * @param {Props} param
+ * @returns React.ReactElement
+ */
 const Cell: React.FC<Props> = ({
   rowIndex,
   columnIndex,
@@ -20,9 +27,13 @@ const Cell: React.FC<Props> = ({
 }) => {
   const { setImagesCount, setLongestRowLabel, setLongestColumnLabel } =
     updaters;
+
+  // Leaving the first cell empty to provide space for the rows and column legends
   if (rowIndex === 0 && columnIndex === 0) {
     return null;
   }
+
+  // The first column and rows higher than 0 should always render row legends
   if (columnIndex === 0 && rowIndex > 0) {
     return (
       <RowLegends>
@@ -34,6 +45,8 @@ const Cell: React.FC<Props> = ({
       </RowLegends>
     );
   }
+
+  // The first row and columns higher than 0 should always render columns legends
   if (rowIndex === 0 && columnIndex > 0) {
     return (
       <ColumnLegends>
@@ -46,6 +59,7 @@ const Cell: React.FC<Props> = ({
     );
   }
 
+  // Rest of the cells will be occupied by Radio buttons
   return <RadioButton type="radio" data-testid="radio-button" />;
 };
 

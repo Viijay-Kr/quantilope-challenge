@@ -1,5 +1,9 @@
 import { useCallback, useMemo, useState } from "react";
 
+/**
+ * useSummary encapsulates the logic to compute the data for the summary view
+ * @returns
+ */
 const useSummary = () => {
   const [imagesCount, setImagesCount] = useState(0);
   const [longestRowLabel, setLongestRowLabel] = useState(0);

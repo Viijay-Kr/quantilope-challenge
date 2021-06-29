@@ -2,10 +2,21 @@ import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
+  /**
+   * Call back to fire after the upload event
+   */
   onUpload: () => void;
-  // this is the id of th file input element should a combination of question id and coordinates
+  /**
+   * A unique identifier for the label element to identify the input[type="file"] button
+   * Should be a combination of question id and coordinates
+   */
   id: string;
 }
+/**
+ *
+ * @param {Props} props
+ * @returns {React.ReactElement} React Element with a hidden file input and a label element for the input element
+ */
 const FileInput: React.FC<Props> = (props) => {
   const { onUpload, id } = props;
   const inputRef = useRef<HTMLInputElement>(null);

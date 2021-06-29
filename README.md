@@ -1,6 +1,6 @@
 ## Quantilope Coding Challenge
 
-I would like to write down some key points about the coding challenge solution . This doc will include the tech stack used,project structure, implementation approach, step to run the application and some improvements which I would like to do
+I would like to write down some key points about the coding challenge solution . This doc will include the tech stack used,project structure, implementation approach, steps to run the application and some improvements which I would like to do
 
 ### Tech Stack
 
@@ -24,6 +24,7 @@ I would like to write down some key points about the coding challenge solution .
 - Used css grids for the question matrix layout
 - Used basic css3 animations
 - Used `craco` package to rewire the application for jest and tsconfig path resolutions
+- Added Doc comments for some components and hooks
 
 ### How To
 
