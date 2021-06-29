@@ -6,8 +6,8 @@ import { useCallback, useMemo, useState } from "react";
  */
 const useSummary = () => {
   const [imagesCount, setImagesCount] = useState(0);
-  const [longestRowLabel, setLongestRowLabel] = useState(0);
-  const [longestColumnLabel, setLongestColumnLabel] = useState(0);
+  const [longestRowLabel, setLongestRowLabel] = useState(4);
+  const [longestColumnLabel, setLongestColumnLabel] = useState(4);
 
   const setRowLabelLength = useCallback(
     (val: string) => {

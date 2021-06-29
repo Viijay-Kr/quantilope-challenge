@@ -34,6 +34,7 @@ const Editable: React.FC<Props> = (props) => {
         value={label}
         onChange={onEdit}
         onKeyDown={onEditSubmit}
+        onBlur={() => setIsEditing(false)}
       ></StyledInput>
     </>
   );
