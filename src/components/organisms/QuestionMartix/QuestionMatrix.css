@@ -1,0 +1,30 @@
+@keyframes easeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  45% {
+    opacity: 0.45;
+  }
+
+  60% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
