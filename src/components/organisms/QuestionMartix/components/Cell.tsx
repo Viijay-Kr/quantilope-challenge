@@ -2,14 +2,13 @@ import React from "react";
 import RadioButton from "components/atoms/RadioButton/RadioButton";
 import Editable from "components/molecules/Editable/Editable";
 import FileInput from "components/molecules/FileInput/FileInput";
-import { useSummary } from "../hooks/useSummary";
 import styled from "styled-components";
+import { useSummaryContext } from "../contexts/Summary.context";
+import { useMatrixContext } from "../contexts/MatrixBuilder.context";
 
 interface Props {
   rowIndex: number;
   columnIndex: number;
-  updaters: ReturnType<typeof useSummary>["updaters"];
-  questionId: number;
 }
 
 /**
@@ -19,15 +18,10 @@ interface Props {
  * @param {Props} param
  * @returns React.ReactElement
  */
-const Cell: React.FC<Props> = ({
-  rowIndex,
-  columnIndex,
-  updaters,
-  questionId,
-}) => {
+const Cell: React.FC<Props> = ({ rowIndex, columnIndex }) => {
   const { setImagesCount, setLongestRowLabel, setLongestColumnLabel } =
-    updaters;
-
+    useSummaryContext().actions;
+  const questionId = useMatrixContext().questionId;
   // Leaving the first cell empty to provide space for the rows and column legends
   if (rowIndex === 0 && columnIndex === 0) {
     return null;

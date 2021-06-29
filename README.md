@@ -10,6 +10,7 @@ I would like to write down some key points about the coding challenge solution .
 - `React hooks`
 - `CSS animations`
 - `react-testing-library`
+- `React Context API`
 
 ### Project set up
 
@@ -20,7 +21,8 @@ I would like to write down some key points about the coding challenge solution .
 
 - Followed Test driven approach
 - Added some basic component tests using `react-testing-library`
-- Used `react-hooks` to manage state and actions
+- Used Context API to build summary and matrix layout
+- Used custom `react-hooks` for managing the data for the context
 - Used css grids for the question matrix layout
 - Used basic css3 animations
 - Used `craco` package to rewire the application for jest and tsconfig path resolutions
