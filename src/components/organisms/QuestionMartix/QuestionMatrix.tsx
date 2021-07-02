@@ -2,9 +2,10 @@ import Summary from "./components/Summary/Summary";
 import "./QuestionMatrix.css";
 import React from "react";
 import styled from "styled-components";
-import Matrix from "./components/Matrix";
+import Matrix from "./components/Matrix/Matrix";
 import MatrixBuilderProvider from "./contexts/MatrixBuilder.context";
 import SummaryProvider from "./contexts/Summary.context";
+import EditableLabel from "components/molecules/Editable/Editable";
 export interface Props {
   defaults: {
     rows: number;
@@ -20,7 +21,12 @@ const QuestionMatrix: React.FC<Props> = (props) => {
       <SummaryProvider>
         <FlexContainer>
           <QuestionContainer>
-            <QuestionTitle>Question Title goes here</QuestionTitle>
+            <QuestionTitle
+              classNames="question-title"
+              label={"Question Title goes here"}
+              //  TODO - the edit callback should save the tile in some state ?
+              onEdit={(f) => f}
+            />
             <Matrix />
           </QuestionContainer>
           <Summary />
@@ -40,11 +46,7 @@ const FlexContainer = styled.div`
   border-bottom: 1px solid;
 `;
 
-const QuestionTitle = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 20px;
-`;
+const QuestionTitle = styled(EditableLabel)``;
 
 const QuestionContainer = styled.div`
   display: flex;

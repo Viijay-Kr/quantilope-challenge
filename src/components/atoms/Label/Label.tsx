@@ -1,25 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 
-interface Props {
-  text: string;
-  onClick: () => void;
-}
-
-const Label: React.FC<Props> = (props) => {
-  const { text, onClick } = props;
-  return (
-    <StyledLabel onClick={onClick} data-testid="editable-label">
-      {text}
-    </StyledLabel>
-  );
-};
-
-const StyledLabel = styled.span`
+const StyledLabel = styled.label`
   font-size: 10px;
   font-style: italic;
   color: #000;
   width: max-content;
 `;
 
-export default Label;
+export default StyledLabel;

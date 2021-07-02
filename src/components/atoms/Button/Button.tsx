@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-const Increment = styled.button`
+const Button = styled.div`
   display: flex;
-  height: 30px;
-  width: 30px;
-  font-size: 22px;
+  font-size: 30px;
   background: none;
   color: green;
   border: none;
@@ -13,4 +11,4 @@ const Increment = styled.button`
   padding: 0px 5px;
 `;
 
-export default Increment;
+export default Button;

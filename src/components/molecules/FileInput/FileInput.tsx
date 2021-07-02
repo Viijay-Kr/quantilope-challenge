@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import styled from "styled-components";
+import { Form, InputButton, Label } from "./FileInput.styled";
 
 interface Props {
   /**
@@ -44,27 +44,5 @@ const FileInput: React.FC<Props> = (props) => {
     </Form>
   );
 };
-
-const Label = styled.label`
-  font-size: 14px;
-  height: 20px;
-  width: 20px;
-  background: #d8e6e6;
-  color: #a59c9c;
-  font-weight: 700;
-  cursor: pointer;
-`;
-
-const Form = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const InputButton = styled.input`
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-`;
 
 export default FileInput;

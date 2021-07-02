@@ -5,6 +5,8 @@ interface MatrixBuilder {
   gridActions: {
     addRows: () => void;
     addColumns: () => void;
+    removeRows: () => void;
+    removeColumns: () => void;
   };
   iterators: {
     rows: number[];
@@ -16,6 +18,8 @@ const MatrixContext = React.createContext<MatrixBuilder>({
   gridActions: {
     addColumns: () => {},
     addRows: () => {},
+    removeRows: () => {},
+    removeColumns: () => {},
   },
   iterators: {
     rows: [0, 0, 0],
@@ -31,8 +35,14 @@ const MatrixBuilderProvider: React.FC<{
     questionId: number;
   };
 }> = ({ defaults, children }) => {
-  const { onAddRows, onAddColumns, rowsIterator, columnsIterator } =
-    useMatrixBuilder(defaults.rows, defaults.columns);
+  const {
+    onAddRows,
+    onAddColumns,
+    rowsIterator,
+    columnsIterator,
+    onRemoveColumns,
+    onRemoveRows,
+  } = useMatrixBuilder(defaults.rows, defaults.columns);
 
   return (
     <MatrixContext.Provider
@@ -40,6 +50,8 @@ const MatrixBuilderProvider: React.FC<{
         gridActions: {
           addRows: onAddRows,
           addColumns: onAddColumns,
+          removeColumns: onRemoveColumns,
+          removeRows: onRemoveRows,
         },
         iterators: {
           rows: rowsIterator,

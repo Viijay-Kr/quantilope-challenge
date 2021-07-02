@@ -1,10 +1,10 @@
 import React from "react";
 import RadioButton from "components/atoms/RadioButton/RadioButton";
-import Editable from "components/molecules/Editable/Editable";
+import EditableLabel from "components/molecules/Editable/Editable";
 import FileInput from "components/molecules/FileInput/FileInput";
 import styled from "styled-components";
-import { useSummaryContext } from "../contexts/Summary.context";
-import { useMatrixContext } from "../contexts/MatrixBuilder.context";
+import { useSummaryContext } from "../../contexts/Summary.context";
+import { useMatrixContext } from "../../contexts/MatrixBuilder.context";
 
 interface Props {
   rowIndex: number;
@@ -35,7 +35,7 @@ const Cell: React.FC<Props> = ({ rowIndex, columnIndex }) => {
           id={`${questionId}-${rowIndex}-${columnIndex}`}
           onUpload={setImagesCount}
         />
-        <Editable onEdit={setLongestRowLabel} label={`row${rowIndex}`} />
+        <EditableLabel onEdit={setLongestRowLabel} label={`row${rowIndex}`} />
       </RowLegends>
     );
   }
@@ -48,20 +48,25 @@ const Cell: React.FC<Props> = ({ rowIndex, columnIndex }) => {
           id={`${questionId}-${rowIndex}-${columnIndex}`}
           onUpload={setImagesCount}
         />
-        <Editable onEdit={setLongestColumnLabel} label={`col${columnIndex}`} />
+        <EditableLabel
+          onEdit={setLongestColumnLabel}
+          label={`col${columnIndex}`}
+        />
       </ColumnLegends>
     );
   }
 
   // Rest of the cells will be occupied by Radio buttons
-  return <RadioButton type="radio" data-testid="radio-button" />;
+  return (
+    <RadioButton name={`${rowIndex}`} type="radio" data-testid="radio-button" />
+  );
 };
 
 const RowLegends = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  span {
+  label {
     margin-left: 5px;
   }
 `;
@@ -69,7 +74,7 @@ const ColumnLegends = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  span {
+  label {
     margin-top: 5px;
   }
 `;
