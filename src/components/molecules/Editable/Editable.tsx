@@ -5,9 +5,10 @@ import styled from "styled-components";
 interface Props {
   label: string;
   onEdit?: (label: string) => void;
+  classNames?: string;
 }
 
-const Editable: React.FC<Props> = (props) => {
+const EditableLabel: React.FC<Props> = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [label, setLabel] = useState(props.label);
   const onEditBegin = () => {
@@ -20,14 +21,26 @@ const Editable: React.FC<Props> = (props) => {
     (e: React.KeyboardEvent) => {
       if (e.key === "Enter") {
         setIsEditing(false);
-        props.onEdit?.(label);
+        if (label.length > 1) {
+          props.onEdit?.(label);
+        } else {
+          setLabel(props.label);
+        }
       }
     },
     [label, props]
   );
   return (
     <>
-      {!isEditing && <Label onClick={onEditBegin} text={label} />}
+      {!isEditing && (
+        <Label
+          data-testid="editable-label"
+          className={props.classNames}
+          onClick={onEditBegin}
+        >
+          {label}
+        </Label>
+      )}
       <StyledInput
         data-testid="hidden-label"
         type={isEditing ? "text" : "hidden"}
@@ -41,7 +54,7 @@ const Editable: React.FC<Props> = (props) => {
 };
 
 const StyledInput = styled.input`
-  width: 40px;
+  width: 100px;
 `;
 
-export default Editable;
+export default EditableLabel;

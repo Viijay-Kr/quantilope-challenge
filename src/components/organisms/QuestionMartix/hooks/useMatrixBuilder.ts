@@ -7,15 +7,27 @@ import { useState, useCallback, useMemo } from "react";
  * @returns -  { onAddRows , onAddColumns, rowsIterator, columnsIterator }
  */
 const useMatrixBuilder = (defaultRows: number, defaultColumns: number) => {
-  const [rows, addRows] = useState(defaultRows);
-  const [columns, addColumns] = useState(defaultColumns);
+  const [rows, setRows] = useState(defaultRows);
+  const [columns, setColumns] = useState(defaultColumns);
 
   const onAddRows = useCallback(() => {
-    addRows(rows + 1);
+    setRows(rows + 1);
   }, [rows]);
 
   const onAddColumns = useCallback(() => {
-    addColumns(columns + 1);
+    setColumns(columns + 1);
+  }, [columns]);
+
+  const onRemoveRows = useCallback(() => {
+    if (rows > 1) {
+      setRows(rows - 1);
+    }
+  }, [rows]);
+
+  const onRemoveColumns = useCallback(() => {
+    if (columns > 1) {
+      setColumns(columns - 1);
+    }
   }, [columns]);
 
   // Adding one extra row and column by default for showing the legends
@@ -31,8 +43,17 @@ const useMatrixBuilder = (defaultRows: number, defaultColumns: number) => {
       onAddColumns,
       rowsIterator,
       columnsIterator,
+      onRemoveRows,
+      onRemoveColumns,
     }),
-    [columnsIterator, onAddColumns, onAddRows, rowsIterator]
+    [
+      columnsIterator,
+      onAddColumns,
+      onAddRows,
+      onRemoveColumns,
+      onRemoveRows,
+      rowsIterator,
+    ]
   );
 };
 

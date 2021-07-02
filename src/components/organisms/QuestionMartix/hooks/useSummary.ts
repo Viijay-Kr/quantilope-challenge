@@ -8,14 +8,19 @@ const useSummary = () => {
   const [imagesCount, setImagesCount] = useState(0);
   const [longestRowLabel, setLongestRowLabel] = useState(4);
   const [longestColumnLabel, setLongestColumnLabel] = useState(4);
+  const [shortestRowLabel, setShortestRowLabel] = useState(4);
+  const [shortestColumnLabel, setShortestColumnLabel] = useState(4);
 
   const setRowLabelLength = useCallback(
     (val: string) => {
       if (val.length > longestRowLabel) {
         setLongestRowLabel(val.length);
       }
+      if (val.length < shortestRowLabel) {
+        setShortestRowLabel(val.length);
+      }
     },
-    [longestRowLabel]
+    [longestRowLabel, shortestRowLabel]
   );
 
   const setColLabelLength = useCallback(
@@ -23,8 +28,11 @@ const useSummary = () => {
       if (val.length > longestColumnLabel) {
         setLongestColumnLabel(val.length);
       }
+      if (val.length < shortestColumnLabel) {
+        setShortestColumnLabel(val.length);
+      }
     },
-    [longestColumnLabel]
+    [longestColumnLabel, shortestColumnLabel]
   );
 
   const appendImages = useCallback(() => {
@@ -33,7 +41,13 @@ const useSummary = () => {
 
   return useMemo(
     () => ({
-      values: { imagesCount, longestRowLabel, longestColumnLabel },
+      values: {
+        imagesCount,
+        longestRowLabel,
+        longestColumnLabel,
+        shortestRowLabel,
+        shortestColumnLabel,
+      },
       updaters: {
         setImagesCount: appendImages,
         setLongestRowLabel: setRowLabelLength,
@@ -47,6 +61,8 @@ const useSummary = () => {
       longestRowLabel,
       setColLabelLength,
       setRowLabelLength,
+      shortestColumnLabel,
+      shortestRowLabel,
     ]
   );
 };

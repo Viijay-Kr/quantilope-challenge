@@ -7,6 +7,8 @@ interface SummaryShape {
     imagesCount: number;
     longestRowLabel: number;
     longestColumnLabel: number;
+    shortestRowLabel: number;
+    shortestColumnLabel: number;
   };
   actions: {
     setImagesCount: () => void;
@@ -20,6 +22,8 @@ const SummaryContext = React.createContext<SummaryShape>({
     imagesCount: 0,
     longestRowLabel: 0,
     longestColumnLabel: 0,
+    shortestRowLabel: 0,
+    shortestColumnLabel: 0,
   },
   actions: {
     setImagesCount: () => {},

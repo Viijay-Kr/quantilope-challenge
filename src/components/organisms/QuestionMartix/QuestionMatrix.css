@@ -28,3 +28,9 @@
     opacity: 1;
   }
 }
+
+.question-title {
+  font-size: 14px !important;
+  font-weight: 500;
+  margin-bottom: 20px;
+}

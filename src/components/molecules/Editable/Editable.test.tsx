@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Editable from "./Editable";
+import EditableLabel from "./Editable";
 
 test("should render a clickable label component and hidden input component", () => {
-  render(<Editable label="Sample" />);
+  render(<EditableLabel label="Sample" />);
   const label = screen.getByTestId("editable-label");
   const input = screen.getByTestId("hidden-label");
   expect(label).toBeInTheDocument();
@@ -11,7 +11,7 @@ test("should render a clickable label component and hidden input component", () 
 });
 
 test("should hide the label and render only the hidden input on label click", () => {
-  render(<Editable label="Sample" />);
+  render(<EditableLabel label="Sample" />);
   const label = screen.getByTestId("editable-label");
   const input = screen.getByTestId("hidden-label");
   fireEvent(
@@ -27,7 +27,7 @@ test("should hide the label and render only the hidden input on label click", ()
 });
 
 test("should change the value of the label after edit", () => {
-  render(<Editable label="Sample" />);
+  render(<EditableLabel label="Sample" />);
   const label = screen.getByTestId("editable-label");
   const input = screen.getByTestId("hidden-label");
   fireEvent(
